@@ -1,0 +1,73 @@
+Install dependencies
+pip install -r requirements.txt
+for BDD frame work test
+--------------------------------
+Run smoke tests:
+behave --tags=@smoke
+As per the tags we need to give that marker name
+Run all tests:
+behave
+-------------------------------------
+for pytest
+To run all tests in suite:
+pytest
+To log the data:
+pytest -v -s
+target specific browser:
+pytest --browser firefox --browser webkit
+for tag before run that we need to mark @pytest.mark.smoke on function:
+pytest -m smoke  ---> -m for mark
+to skip the test @pytest.mark.skip
+Stop executing immediately upon the very first test failure:
+pytest -x
+to run specific test:
+pytest Tests/test_login.py
+to run specific function:
+pytest Tests/test_login.py:test_log
+trace automatically on failure:
+pytest --tracing retain-on-failure
+parallel execution:
+pytest -n 4
+capture screenshot:
+pytest --screenshot=only-on-failure
+generate allure report:
+pytest --alluredir=reports/allure-results
+show report:
+allure serve reports/allure-results
+
+
+-----------------------------------------
+Assumptions
+OrangeHRM demo site is stable and accessible at https://opensource-demo.orangehrmlive.com/.
+
+Demo credentials (Admin/admin123) remain valid.
+
+Demo data resets periodically, so created users may not persist across sessions.
+
+Tests are executed locally in a Python virtual environment.
+-------------------------------------------
+Limitations
+Current implementation validates workflows only via UI automation; no API checks are included.
+
+Demo environment may occasionally be slow or reset, leading to flaky results.
+
+No parallel execution configured yet, so regression runs may take longer.
+
+Reporting is limited to Behave’s console output.
+
+---------------------
+Suggested Improvements
+Reporting: Integrate Allure or HTML reports for better visibility.
+
+CI/CD: Run Behave tests in GitHub Actions or Azure DevOps pipelines for continuous validation.
+-------------------------------------
+QA/Automation Approach Summary
+Maintainability: Adopted Page Object Model (POM) for reusable, clean, and modular code.
+
+BDD-style clarity: Feature files describe workflows in business-readable language, improving collaboration.
+
+Classification strategy: Tagged scenarios as @smoke (critical path) and @regression (broader coverage).
+
+Modern QA mindset: Focused on reporting, CI/CD integration, and hybrid strategies to improve release confidence.
+
+Engineering decisions: Chose Playwright for fast, reliable browser automation and Behave for structured BDD.
