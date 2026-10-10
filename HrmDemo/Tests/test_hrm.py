@@ -2,7 +2,7 @@ import pytest
 
 from Pages.hrm_page import HrmPage
 
-
+#checking code
 @pytest.mark.smoke
 def test_admin_user_workflow(page) -> None:
     hrm_page = HrmPage(page)
